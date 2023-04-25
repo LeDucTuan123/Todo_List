@@ -1,0 +1,52 @@
+.wrapper {
+    padding: 0;
+    margin: 0;
+}
+
+.add-item {
+    padding: 5px;
+    margin-bottom: 8px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #75bcff;
+}
+.update-item {
+    padding: 5px;
+    margin-bottom: 8px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #ffc107;
+}
+
+.button-submit {
+    padding: 6px;
+    margin-right: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #f7214f;
+    color: #000000;
+}
+.button-cancel {
+    padding: 6px;
+    margin-right: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #aaa3a5;
+    color: #000000;
+}
+
+.input {
+    padding: 8px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-right: 5px;
+    border: 1px solid #333;
+    // outline: none;
+}
