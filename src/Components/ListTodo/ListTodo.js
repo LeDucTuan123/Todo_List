@@ -1,13 +1,26 @@
 import className from 'classnames/bind';
 import Style from './ListTodo.module.scss';
+import {CSVLink} from 'react-csv';
 
 const cx = className.bind(Style);
-
 const ListTodo = (props) => {
-    let {item, search, handleDeleteTodo, handleShowEdit} = props;
+    let {item, dataExport, search, handleDeleteTodo, handleShowEdit, handleExportUser} = props;
 
     return (
         <>
+            <div>
+                <button className={cx('btn-export')}>
+                    <CSVLink
+                        className={cx('export')}
+                        filename="Data-User.xlsx"
+                        data={dataExport}
+                        onClick={handleExportUser}
+                        asyncOnClick={true}
+                    >
+                        Export
+                    </CSVLink>
+                </button>
+            </div>
             <div className={cx('title')}>
                 <h3>List Todo</h3>
             </div>

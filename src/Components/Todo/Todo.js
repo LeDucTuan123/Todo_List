@@ -5,19 +5,34 @@ import Style from './todo.module.scss';
 import Search from '../../Components/Search/Search';
 import Form from '../../Components/Form/Form';
 import ListTodo from '../../Components/ListTodo/ListTodo';
-
+import {debounce} from 'lodash';
 import {useState} from 'react';
+// import {createBrowserHistory} from '@remix-run/router';
 
 const cx = className.bind(Style);
 
-let itemTodo = {
-    id: 1,
-    name: 'Lê Đức Tuấn',
-    education: 'Cao Đẳng',
-    level: 'Medium',
-};
+let itemTodo = [
+    {
+        id: 1,
+        name: 'Lê Đức Tuấn',
+        education: 'Cao Đẳng',
+        level: 'Medium',
+    },
+    {
+        id: 2,
+        name: 'Phan văn Tuána',
+        education: 'đại học',
+        level: 'Height',
+    },
+    {
+        id: 3,
+        name: 'Nguyễn Thị Phương',
+        education: 'đại học',
+        level: 'Small',
+    },
+];
 function Todo() {
-    const [item, setItem] = useState([itemTodo]);
+    const [item, setItem] = useState(itemTodo);
 
     const [name, setName] = useState('');
     const [education, setEducation] = useState('');
@@ -35,6 +50,8 @@ function Todo() {
     };
     const [search, setSearch] = useState('');
     const [showForm, setShowForm] = useState(false);
+
+    const [dataExport, setDataExport] = useState(item);
 
     const OnchangeName = (e) => {
         setName(e.target.value);
@@ -92,15 +109,31 @@ function Todo() {
         setEditing(false);
     };
 
-    const OnchangeSearch = (e) => {
+    const OnchangeSearch = debounce((e) => {
         setSearch(e.target.value);
-    };
+    }, 1000);
 
     const handleShowForm = (a) => {
         setShowForm(a);
     };
     const CancelForm = (a) => {
         setEditing(a);
+    };
+
+    const handleExportUser = () => {
+        let result = [];
+        if (item && item.lenght > 0) {
+            item.push('Name', 'Education', 'Level');
+            item.map((item) => {
+                let arr = [];
+                arr[0] = item.id;
+                arr[1] = item.name;
+                arr[2] = item.education;
+                arr[3] = item.level;
+                return result[arr];
+            });
+            setDataExport(result);
+        }
     };
 
     return (
@@ -134,9 +167,11 @@ function Todo() {
                 <hr style={{marginTop: '100px'}} />
                 <ListTodo
                     item={item}
+                    dataExport={dataExport}
                     search={search}
                     handleDeleteTodo={handleDeleteTodo}
                     handleShowEdit={handleShowEdit}
+                    handleExportUser={handleExportUser}
                 />
             </div>
         </div>

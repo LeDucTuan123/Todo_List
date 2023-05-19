@@ -7,6 +7,19 @@
     color: #0f0e0e !important ;
 }
 
+.btn-export {
+    background-color: rgb(236, 197, 124);
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    .export {
+        font-weight: 500;
+        font-size: 1.2rem;
+        color: #333;
+        text-decoration: none;
+    }
+}
+
 #customers {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
